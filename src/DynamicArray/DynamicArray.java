@@ -103,15 +103,22 @@ public class DynamicArray<T> {
 
         // adds new element to the end of the list
 
-        int currentSize = getSize();
 
-        resize(currentSize + 1);
+        resize(getSize() + 1);
 
-        list[currentSize - 1] = value;
+        list[getSize() - 1] = value;
     }
 
     public void insert(int index, T value) {
-        return;
+        if (index < 0 || index > getSize()) {
+            throw new InvalidIndexException(index, getSize());
+        }
+
+        resize(getSize() + 1);
+
+        if (getSize() - 1 - index >= 0) System.arraycopy(list, index, list, index + 1, getSize() - 1 - index);
+
+        set(index, value);
     }
 
     public void remove(int index) {
