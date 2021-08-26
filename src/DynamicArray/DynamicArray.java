@@ -31,7 +31,7 @@ public class DynamicArray<T> {
         // returns list element by index
 
         if (index < 0 || index > list.length) {
-            throw new InvalidIndexException(index);
+            throw new InvalidIndexException(index, getSize());
         }
 
         return list[index];
@@ -66,7 +66,11 @@ public class DynamicArray<T> {
     // EDIT ARRAY
 
     public void set(int index, T value) {
-        return;
+        if (index < 0 || index > getSize()) {
+            throw new InvalidIndexException(index, getSize());
+        }
+
+        list[index] = value;
     }
 
     public void resize(int newSize) {
