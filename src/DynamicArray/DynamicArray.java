@@ -100,7 +100,14 @@ public class DynamicArray<T> {
     }
 
     public void append(T value) {
-        return;
+
+        // adds new element to the end of the list
+
+        int currentSize = getSize();
+
+        resize(currentSize + 1);
+
+        list[currentSize - 1] = value;
     }
 
     public void insert(int index, T value) {
