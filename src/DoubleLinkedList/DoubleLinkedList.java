@@ -72,9 +72,39 @@ public class DoubleLinkedList<T> {
 
     public Node<T> findFirst(T value) {
 
-        // returns node by its value
+        // returns the first occurrence of node with a specific value
 
-        return start;
+        Node<T> iterator = start;
+        while (iterator.getNext() != null) {
+
+            if (iterator.getData() != null && iterator.getData().equals(value)) {
+                return iterator;
+            }
+
+            iterator = iterator.getNext();
+        }
+
+        throw new ValueNotFoundException();
+    }
+
+    public int findFirstIndex(T value) {
+
+        // returns index of the first occurrence of node with a specific value
+
+        Node<T> iterator = start;
+        int index = 0;
+
+        while (iterator.getNext() != null) {
+
+            if (iterator.getData() != null && iterator.getData().equals(value)) {
+                return index;
+            }
+
+            index++;
+            iterator = iterator.getNext();
+        }
+
+        throw new ValueNotFoundException();
     }
 
     public Boolean isEmpty() {
@@ -87,7 +117,7 @@ public class DoubleLinkedList<T> {
 
     // EDIT LIST
 
-    public void appendNode(Node<T> newNode) {
+    public void append(Node<T> newNode) {
 
         // links new node to the last one
 
@@ -97,7 +127,7 @@ public class DoubleLinkedList<T> {
 
         // checking if newNode has its own connections
         Node<T> iterator = newNode;
-        if (iterator.getNext() != null) {
+        while (iterator.getNext() != null) {
             iterator = iterator.getNext();
         }
 
@@ -105,7 +135,7 @@ public class DoubleLinkedList<T> {
         end = iterator;
     }
 
-    public void popNode(Node<T> node) {
+    public void pop(Node<T> node) {
 
         // disconnects node from other nodes
 
