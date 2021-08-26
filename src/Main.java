@@ -3,12 +3,13 @@ import DoubleLinkedList.*;
 public class Main {
 
     public static void main(String[] args) {
-        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(0);
 
         list.appendNode(new Node<Integer>(1));
-        list.appendNode(new Node<Integer>(1));
-        list.appendNode(new Node<Integer>(1));
+        list.appendNode(new Node<Integer>(2));
+        list.appendNode(new Node<Integer>(3));
 
-        System.out.println(list.getSize());
+        int temp = list.get(2).getData();
+        System.out.println(temp);
     }
 }

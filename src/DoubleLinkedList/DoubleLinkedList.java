@@ -6,25 +6,23 @@ public class DoubleLinkedList<T> {
 
     public DoubleLinkedList() {
         start = new Node<T>();
-        end = new Node<T>();
-
-        start.setNext(end);
-        start.getNext().setPrev(start);
+        start.setPrev(start);
+        end = start;
     }
 
     public DoubleLinkedList(T value) {
         start = new Node<T>();
-        end = new Node<T>();
-
         start.setData(value);
 
-        start.setNext(end);
-        start.getNext().setPrev(start);
+        end = start;
     }
 
     // GET INFO
 
     public int getSize() {
+
+        // returns number of nodes
+
         Node<T> iterator = start;
         int size = 1;
 
@@ -44,17 +42,28 @@ public class DoubleLinkedList<T> {
 
         // returns node by its index
 
-        return start;
+        int listSize = getSize();
+        if (index < 0 || index >= listSize) {
+            throw new InvalidIndexException(index, listSize);
+        }
+
+        Node<T> iterator = start;
+
+        for (int i = 0; i < index; i++) {
+            iterator = iterator.getNext();
+        }
+
+        return iterator;
     }
 
-    public Node<T> getStart(int index) {
+    public Node<T> getStart() {
 
         // returns first node
 
         return start;
     }
 
-    public Node<T> getEnd(int index) {
+    public Node<T> getEnd() {
 
         // returns last node
 
@@ -78,13 +87,22 @@ public class DoubleLinkedList<T> {
 
     // EDIT LIST
 
-    public void appendNode(Node<T> node) {
+    public void appendNode(Node<T> newNode) {
 
-        // links the last node to the new node
+        // links new node to the last one
 
-        node.setPrev(end);
-        end.setNext(node);
+        // connecting new node to the last one
+        end.setNext(newNode);
+        newNode.setPrev(end);
 
+        // checking if newNode has its own connections
+        Node<T> iterator = newNode;
+        if (iterator.getNext() != null) {
+            iterator = iterator.getNext();
+        }
+
+        // declaring the last newNode connection the end
+        end = iterator;
     }
 
     public void popNode(Node<T> node) {
