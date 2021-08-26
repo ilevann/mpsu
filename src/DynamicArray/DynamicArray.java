@@ -3,10 +3,10 @@ package DynamicArray;
 public class DynamicArray<T> {
 
     private T[] list;
-    protected int defaultSize = 0;
+    protected int DEFAULT_SIZE = 0;
 
     public DynamicArray() {
-        list = (T[]) new Object[defaultSize];
+        list = (T[]) new Object[DEFAULT_SIZE];
     }
 
     public DynamicArray(int size) {
