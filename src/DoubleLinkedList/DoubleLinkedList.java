@@ -80,7 +80,10 @@ public class DoubleLinkedList<T> {
 
     public void appendNode(Node<T> node) {
 
-        // links last node to the new node
+        // links the last node to the new node
+
+        node.setPrev(end);
+        end.setNext(node);
 
     }
 
