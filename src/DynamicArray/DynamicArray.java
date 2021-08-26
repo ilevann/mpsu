@@ -30,7 +30,7 @@ public class DynamicArray<T> {
 
         // returns list element by index
 
-        if (index < 0 || index > list.length) {
+        if (index < 0 || index >= getSize()) {
             throw new InvalidIndexException(index, getSize());
         }
 
@@ -42,7 +42,7 @@ public class DynamicArray<T> {
         // returns first search result
 
         for (int i=0; i < getSize(); i++) {
-            if (get(i).equals(value)) {
+            if (get(i) != null && get(i).equals(value)) {
                 return i;
             }
         }
@@ -72,7 +72,7 @@ public class DynamicArray<T> {
     // EDIT ARRAY
 
     public void set(int index, T value) {
-        if (index < 0 || index > getSize()) {
+        if (index < 0 || index >= getSize()) {
             throw new InvalidIndexException(index, getSize());
         }
 
@@ -106,11 +106,11 @@ public class DynamicArray<T> {
 
         resize(getSize() + 1);
 
-        list[getSize() - 1] = value;
+        set(getSize() - 1,  value);
     }
 
     public void insert(int index, T value) {
-        if (index < 0 || index > getSize()) {
+        if (index < 0 || index >= getSize()) {
             throw new InvalidIndexException(index, getSize());
         }
 
@@ -143,9 +143,11 @@ public class DynamicArray<T> {
     }
 
     // DEV METHODS
-    protected void printAll() {
-        for (Object i : list) {
-            System.out.println(i);
+    public void printAll() {
+        System.out.print("[");
+        for (int i = 0; i < getSize() - 1; i++) {
+            System.out.print(get(i) + ", ");
         }
+        System.out.print(get(getSize() - 1) + "]");
     }
 }

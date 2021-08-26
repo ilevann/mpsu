@@ -97,14 +97,14 @@ public class DynamicArrayTests {
     }
 
     @Test
-    public void findFirst_InvalidValue_ThrowsException() {
+    public void findFirst_ValueNotFound_ThrowsException() {
         DynamicArray<Integer> array = new DynamicArray<Integer>(10);
 
         for (int i=0; i < array.getSize(); i++) {
             array.set(i, i);
         }
 
-        assertThrows(InvalidIndexException.class, () -> array.findFirst(777));
+        assertThrows(ValueNotFoundException.class, () -> array.findFirst(777));
     }
 
     // FINDLAST TESTS
@@ -135,20 +135,20 @@ public class DynamicArrayTests {
         array.set(3, 777);
         array.set(4, 777);
 
-        int expected = 3;
+        int expected = 4;
         int actual = array.findLast(777);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void findLast_InvalidValue_ThrowsException() {
+    public void findLast_ValueNotFound_ThrowsException() {
         DynamicArray<Integer> array = new DynamicArray<Integer>(10);
 
         for (int i=0; i < array.getSize(); i++) {
             array.set(i, i);
         }
 
-        assertThrows(InvalidIndexException.class, () -> array.findLast(777));
+        assertThrows(ValueNotFoundException.class, () -> array.findLast(777));
     }
 
     // SET TESTS
@@ -245,6 +245,42 @@ public class DynamicArrayTests {
     }
 
     // INSERT TESTS
+
+    @Test
+    public void insert_IndexValidation() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        array.set(5, 5);
+        array.insert(5, 777);
+
+        int expected = 5;
+        int actual = array.findFirst(777);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void insert_ValueValidation() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        array.set(5, 5);
+        array.insert(5, 777);
+
+        int expected = 777;
+        int actual = array.get(5);
+        assertEquals(expected, actual);
+
+        expected = 5;
+        actual = array.get(6);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void insert_InvalidIndex_ThrowsException() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        assertThrows(InvalidIndexException.class, () -> array.insert(-1, 777));
+        assertThrows(InvalidIndexException.class, () -> array.insert(10, 777));
+    }
 
     // REMOVE TESTS
 
