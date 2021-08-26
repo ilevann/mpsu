@@ -20,10 +20,16 @@ public class DynamicArray<T> {
     // GET INFO
 
     public int getSize() {
-        return 0;
+
+        // returns number of elements in the list
+
+        return list.length;
     }
 
     public T get(int index) {
+
+        // returns the element by index
+
         return null;
     }
 
