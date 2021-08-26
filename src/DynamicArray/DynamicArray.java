@@ -2,8 +2,8 @@ package DynamicArray;
 
 public class DynamicArray<T> {
 
-    public T[] list;
-    public int defaultSize = 0;
+    private T[] list;
+    protected int defaultSize = 0;
 
     public DynamicArray() {
         list = (T[]) new Object[defaultSize];

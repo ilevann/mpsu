@@ -65,6 +65,48 @@ public class DynamicArrayTests {
 
     // FINDFIRST TESTS
 
+    @Test
+    public void findFirst_int() {
+        DynamicArray<Integer> array = new DynamicArray<Integer> (10);
+
+        for (int i=0; i < array.getSize(); i++) {
+            array.set(i, i);
+        }
+
+        array.set(3, 777);
+
+        int expected = 3;
+        int actual = array.findFirst(777);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findFirst_int_multiple() {
+        DynamicArray<Integer> array = new DynamicArray<Integer> (10);
+
+        for (int i=0; i < array.getSize(); i++) {
+            array.set(i, i);
+        }
+
+        array.set(3, 777);
+        array.set(4, 777);
+
+        int expected = 3;
+        int actual = array.findFirst(777);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findFirst_InvalidValue_ThrowsException() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        for (int i=0; i < array.getSize(); i++) {
+            array.set(i, i);
+        }
+
+        assertThrows(InvalidIndexException.class, () -> array.findFirst(777));
+    }
+
     // FINDLAST TESTS
 
     // SET TESTS
