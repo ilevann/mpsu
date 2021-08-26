@@ -48,7 +48,19 @@ public class DynamicArray<T> {
     }
 
     public int findLast(T value) {
-        return 0;
+        int last_index = -1;
+
+        for (int i=0; i < getSize(); i++) {
+            if (get(i).equals(value)) {
+                last_index = i;
+            }
+        }
+
+        if (last_index >= 0) {
+            return last_index;
+        }
+
+        throw new ValueNotFoundException();
     }
 
     // EDIT ARRAY
