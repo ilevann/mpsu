@@ -4,12 +4,23 @@ public class DoubleLinkedList<T> {
     public Node<T> start;
     public Node<T> end;
 
-    int DEFAULT_SIZE = 0;
 
     // GET INFO
 
     public int getSize() {
-        return 0;
+        Node<T> iterator = start;
+        int size = 1;
+
+        if (start == null) {
+            return 0;
+        }
+
+        while (iterator.next() != null) {
+            size++;
+            iterator = iterator.next();
+        }
+
+        return size;
     }
 
     public Node<T> get(int index) {
@@ -76,6 +87,7 @@ public class DoubleLinkedList<T> {
     private void traverse() {
 
         // traverses throughout list
+
 
     }
 }
