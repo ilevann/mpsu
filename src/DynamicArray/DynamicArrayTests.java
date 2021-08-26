@@ -222,6 +222,28 @@ public class DynamicArrayTests {
 
     // APPEND TESTS
 
+    @Test
+    public void append_IndexValidation() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        array.append(777);
+
+        int expected = 11;
+        int actual = array.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void append_ValueValidation() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        array.append(777);
+
+        int expected = 777;
+        int actual = array.get(10);
+        assertEquals(expected, actual);
+    }
+
     // INSERT TESTS
 
     // REMOVE TESTS
