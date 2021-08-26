@@ -28,9 +28,13 @@ public class DynamicArray<T> {
 
     public T get(int index) {
 
-        // returns the element by index
+        // returns list element by index
 
-        return null;
+        if (index < 0 || index > list.length) {
+            throw new InvalidIndexException(index);
+        }
+
+        return list[index];
     }
 
     public int findFirst(T value) {
