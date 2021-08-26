@@ -44,6 +44,25 @@ public class DynamicArrayTests {
 
     // GET TESTS
 
+    @Test
+    public void get() {
+        DynamicArray<String> array = new DynamicArray<String>(5);
+
+        array.set(0, "ama here");
+
+        String expected = "ama here";
+        String actual = array.get(0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void get_InvalidIndex_ThrowsException() {
+        DynamicArray<String> array = new DynamicArray<String>(5);
+
+        assertThrows(InvalidIndexException.class, () -> array.get(-1));
+        assertThrows(InvalidIndexException.class, () -> array.get(5));
+    }
+
     // FINDFIRST TESTS
 
     // FINDLAST TESTS
