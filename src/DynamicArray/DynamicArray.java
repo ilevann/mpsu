@@ -16,4 +16,49 @@ public class DynamicArray<T> {
 
         list = (T[]) new Object[size];
     }
+
+    // GET INFO
+
+    public int getSize() {
+        return 0;
+    }
+
+    public T get(int index) {
+        return null;
+    }
+
+    public int findFirst(T value) {
+        return 0;
+    }
+
+    public int findLast(T value) {
+        return 0;
+    }
+
+    // EDIT ARRAY
+
+    public void set(int index, T value) {
+        return;
+    }
+
+    public void resize(int newSize) {
+        return;
+    }
+
+    public void append(T value) {
+        return;
+    }
+
+    public void insert(int index, T value) {
+        return;
+    }
+
+    public void remove(int index) {
+        return;
+    }
+
+    // DEV METHODS
+    protected void printAll() {
+        return;
+    }
 }
