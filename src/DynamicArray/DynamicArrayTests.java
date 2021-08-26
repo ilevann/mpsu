@@ -109,6 +109,48 @@ public class DynamicArrayTests {
 
     // FINDLAST TESTS
 
+    @Test
+    public void findLast_int() {
+        DynamicArray<Integer> array = new DynamicArray<Integer> (10);
+
+        for (int i=0; i < array.getSize(); i++) {
+            array.set(i, i);
+        }
+
+        array.set(3, 777);
+
+        int expected = 3;
+        int actual = array.findLast(777);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findLast_int_multiple() {
+        DynamicArray<Integer> array = new DynamicArray<Integer> (10);
+
+        for (int i=0; i < array.getSize(); i++) {
+            array.set(i, i);
+        }
+
+        array.set(3, 777);
+        array.set(4, 777);
+
+        int expected = 3;
+        int actual = array.findLast(777);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findLast_InvalidValue_ThrowsException() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        for (int i=0; i < array.getSize(); i++) {
+            array.set(i, i);
+        }
+
+        assertThrows(InvalidIndexException.class, () -> array.findLast(777));
+    }
+
     // SET TESTS
 
     // RESIZE TESTS
