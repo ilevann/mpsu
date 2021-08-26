@@ -33,6 +33,15 @@ public class DynamicArrayTests {
 
     // GETSIZE TESTS
 
+    @Test
+    public void getSize() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(5);
+
+        int expected = 5;
+        int actual = array.getSize();
+        assertEquals(expected, actual);
+    }
+
     // GET TESTS
 
     // FINDFIRST TESTS
