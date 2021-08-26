@@ -122,7 +122,24 @@ public class DynamicArray<T> {
     }
 
     public void remove(int index) {
-        return;
+        if (index < 0 || index > list.length) {
+            throw new InvalidIndexException(index, getSize())
+        }
+
+        T[] newList = (T[]) new Object[list.length - 1];
+
+
+        // copying list before index
+        for (int i=0; i < index; i++) {
+            newList[i] = list[i];
+        }
+
+        // copying list after index
+        for (int i=index+1; i < list.length; i++) {
+            newList[i-1] = list[i];
+        }
+
+        list = newList;
     }
 
     // DEV METHODS
