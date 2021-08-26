@@ -38,6 +38,9 @@ public class DynamicArray<T> {
     }
 
     public int findFirst(T value) {
+
+        // returns first search result
+
         for (int i=0; i < getSize(); i++) {
             if (get(i).equals(value)) {
                 return i;
@@ -48,6 +51,9 @@ public class DynamicArray<T> {
     }
 
     public int findLast(T value) {
+
+        // returns last search result
+
         int last_index = -1;
 
         for (int i=0; i < getSize(); i++) {
@@ -74,7 +80,23 @@ public class DynamicArray<T> {
     }
 
     public void resize(int newSize) {
-        return;
+
+        // copies list elements into another list with different size
+
+        if (newSize < 1) {
+            throw new InvalidArraySizeException();
+        }
+
+        T[] newList = (T[]) new Object[newSize];
+
+        int UpperBound = newSize;
+        if (newSize > list.length) {
+            UpperBound = list.length;
+        }
+
+        System.arraycopy(list, 0, newList, 0, UpperBound);
+
+        list = newList;
     }
 
     public void append(T value) {
