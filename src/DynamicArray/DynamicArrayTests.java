@@ -153,6 +153,25 @@ public class DynamicArrayTests {
 
     // SET TESTS
 
+    @Test
+    public void set_int() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        array.set(0, 777);
+
+        int expected = 777;
+        int actual = array.get(0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findLast_InvalidIndex_ThrowsException() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        assertThrows(InvalidIndexException.class, () -> array.set(-1, 777));
+        assertThrows(InvalidIndexException.class, () -> array.set(10, 777));
+    }
+
     // RESIZE TESTS
 
     // APPEND TESTS
