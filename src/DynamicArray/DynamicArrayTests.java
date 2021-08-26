@@ -212,6 +212,14 @@ public class DynamicArrayTests {
         }
     }
 
+    @Test
+    public void resize_InvalidArraySize_ThrowsException() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        assertThrows(InvalidArraySizeException.class, () -> array.resize(-1));
+        assertThrows(InvalidArraySizeException.class, () -> array.resize(0));
+    }
+
     // APPEND TESTS
 
     // INSERT TESTS
