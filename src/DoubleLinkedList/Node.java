@@ -25,14 +25,14 @@ public class Node<T> {
         return data;
     }
 
-    public Node<T> prev() {
+    public Node<T> getPrev() {
 
         // returns previous node
 
         return prev;
     }
 
-    public Node<T> next() {
+    public Node<T> getNext() {
 
         // returns next node
 
@@ -43,5 +43,13 @@ public class Node<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public void setPrev(Node<T> prev) {
+        this.prev = prev;
+    }
+
+    public void setNext(Node<T> next) {
+        this.next = next;
     }
 }

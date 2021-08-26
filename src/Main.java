@@ -1,8 +1,8 @@
-import DynamicArray.DynamicArray;
+import DoubleLinkedList.DoubleLinkedList;
 
 public class Main {
 
     public static void main(String[] args) {
-        // done actually 1 and 2
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
     }
 }

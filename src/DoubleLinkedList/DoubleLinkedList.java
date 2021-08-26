@@ -4,6 +4,23 @@ public class DoubleLinkedList<T> {
     public Node<T> start;
     public Node<T> end;
 
+    public DoubleLinkedList() {
+        start = new Node<T>();
+        end = new Node<T>();
+
+        start.setNext(end);
+        start.getNext().setPrev(start);
+    }
+
+    public DoubleLinkedList(T value) {
+        start = new Node<T>();
+        end = new Node<T>();
+
+        start.setData(value);
+
+        start.setNext(end);
+        start.getNext().setPrev(start);
+    }
 
     // GET INFO
 
@@ -15,9 +32,9 @@ public class DoubleLinkedList<T> {
             return 0;
         }
 
-        while (iterator.next() != null) {
+        while (iterator.getNext() != null) {
             size++;
-            iterator = iterator.next();
+            iterator = iterator.getNext();
         }
 
         return size;
@@ -60,6 +77,12 @@ public class DoubleLinkedList<T> {
     }
 
     // EDIT LIST
+
+    public void appendNode(Node<T> node) {
+
+        // links last node to the new node
+
+    }
 
     public void popNode(Node<T> node) {
 
