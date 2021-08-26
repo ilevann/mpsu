@@ -123,7 +123,7 @@ public class DynamicArray<T> {
 
     public void remove(int index) {
         if (index < 0 || index > list.length) {
-            throw new InvalidIndexException(index, getSize())
+            throw new InvalidIndexException(index, getSize());
         }
 
         T[] newList = (T[]) new Object[list.length - 1];
@@ -144,6 +144,8 @@ public class DynamicArray<T> {
 
     // DEV METHODS
     protected void printAll() {
-        return;
+        for (Object i : list) {
+            System.out.println(i);
+        }
     }
 }
