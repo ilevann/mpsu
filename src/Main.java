@@ -3,10 +3,14 @@ import DynamicArray.DynamicArray;
 public class Main {
 
     public static void main(String[] args) {
-        DynamicArray<Integer> list = new DynamicArray<Integer>(10);
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
 
-        list.set(5, 5);
-        list.insert(5, 777);
-        list.printAll();
+        array.set(4, 5);
+        array.set(6, 5);
+        array.set(5, 777);
+
+        array.printAll();
+        array.remove(5);
+        array.printAll();
     }
 }

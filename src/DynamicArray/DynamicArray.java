@@ -90,8 +90,8 @@ public class DynamicArray<T> {
         T[] newList = (T[]) new Object[newSize];
 
         int UpperBound = newSize;
-        if (newSize > list.length) {
-            UpperBound = list.length;
+        if (newSize > getSize()) {
+            UpperBound = getSize();
         }
 
         System.arraycopy(list, 0, newList, 0, UpperBound);
@@ -122,11 +122,11 @@ public class DynamicArray<T> {
     }
 
     public void remove(int index) {
-        if (index < 0 || index > list.length) {
+        if (index < 0 || index >= getSize()) {
             throw new InvalidIndexException(index, getSize());
         }
 
-        T[] newList = (T[]) new Object[list.length - 1];
+        T[] newList = (T[]) new Object[getSize() - 1];
 
 
         // copying list before index
@@ -135,7 +135,7 @@ public class DynamicArray<T> {
         }
 
         // copying list after index
-        for (int i=index+1; i < list.length; i++) {
+        for (int i=index+1; i < getSize(); i++) {
             newList[i-1] = list[i];
         }
 
@@ -148,6 +148,6 @@ public class DynamicArray<T> {
         for (int i = 0; i < getSize() - 1; i++) {
             System.out.print(get(i) + ", ");
         }
-        System.out.print(get(getSize() - 1) + "]");
+        System.out.println(get(getSize() - 1) + "]");
     }
 }
