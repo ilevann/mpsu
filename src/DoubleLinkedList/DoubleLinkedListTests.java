@@ -332,7 +332,77 @@ public class DoubleLinkedListTests {
 
     // ISEMPTY TESTS
 
+    @Test
+    public void isEnpty_EmptyList() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+
+        boolean expected = true;
+        boolean actual = list.isEmpty();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void isEnpty_NotEmptyList() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+
+        list.appendValue(1);
+        list.appendValue(1);
+        list.appendValue(1);
+
+        boolean expected = false;
+        boolean actual = list.isEmpty();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void isEnpty_FullList() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(4);
+
+        list.appendValue(1);
+        list.appendValue(3);
+        list.appendValue(1);
+
+        boolean expected = false;
+        boolean actual = list.isEmpty();
+        assertEquals(expected, actual);
+    }
+
     // ISFULL TESTS
+
+    @Test
+    public void isFull_EmptyList() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+
+        boolean expected = false;
+        boolean actual = list.isFull();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void isFull_NotEmptyList() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+
+        list.appendValue(1);
+        list.appendValue(1);
+        list.appendValue(1);
+
+        boolean expected = false;
+        boolean actual = list.isFull();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void isFull_FullList() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(4);
+
+        list.appendValue(1);
+        list.appendValue(3);
+        list.appendValue(1);
+
+        boolean expected = true;
+        boolean actual = list.isFull();
+        assertEquals(expected, actual);
+    }
 
     // CONTAINS TESTS
 
