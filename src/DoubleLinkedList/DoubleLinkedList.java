@@ -179,6 +179,10 @@ public class DoubleLinkedList<T> {
         end = iterator;
     }
 
+    public void appendValue(T value) {
+        append(new Node<T>(value));
+    }
+
     public void pop(Node<T> node) {
 
         // removes given node
