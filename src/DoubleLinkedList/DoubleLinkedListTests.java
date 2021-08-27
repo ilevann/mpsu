@@ -406,6 +406,32 @@ public class DoubleLinkedListTests {
 
     // CONTAINS TESTS
 
+    @Test
+    public void contains_ValueExists() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(4);
+
+        list.appendValue(1);
+        list.appendValue(3);
+        list.appendValue(1);
+
+        boolean expected = true;
+        boolean actual = list.contains(4);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void contains_ValueNotExists() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(4);
+
+        list.appendValue(1);
+        list.appendValue(3);
+        list.appendValue(1);
+
+        boolean expected = false;
+        boolean actual = list.contains(228);
+        assertEquals(expected, actual);
+    }
+
     // APPEND TESTS
 
     // APPENDVALUE TESTS
