@@ -1,7 +1,7 @@
 package DoubleLinkedList;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DoubleLinkedListTests {
 
@@ -432,9 +432,96 @@ public class DoubleLinkedListTests {
         assertEquals(expected, actual);
     }
 
+    // APPENDVALUE TESTS
+
+    @Test
+    public void appendValue_SizeValidation() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(228);
+
+        list.appendValue(1);
+        list.appendValue(228);
+        list.appendValue(228);
+
+        int expected = 4;
+        int actual = list.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void appendValue_ValueValidation() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(228);
+
+        list.appendValue(1);
+        list.appendValue(228);
+        list.appendValue(69);
+
+        int expected = 69;
+        int actual = list.getEnd().getData();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void appendValue_IntegrityValidation() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(0);
+
+        for (int i = 1; i < 10; i++) {
+            list.appendValue(i);
+        }
+
+        for (int i = 1; i < 10; i++) {
+            assertEquals(i, list.get(i).getData());
+        }
+    }
+
+    @Test
+    public void appendValue_AppendNull() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(228);
+
+        list.appendValue(null);
+        Object actual = list.getEnd().getData();
+        assertNull(actual);
+    }
+
     // APPEND TESTS
 
-    // APPENDVALUE TESTS
+    @Test
+    public void append_SizeValidation() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(228);
+
+        list.append(new Node<Integer>(1));
+        list.append(new Node<Integer>(228));
+        list.append(new Node<Integer>(228));
+
+        int expected = 4;
+        int actual = list.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void append_ValueValidation() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(228);
+
+        list.append(new Node<Integer>(1));
+        list.append(new Node<Integer>(228));
+        list.append(new Node<Integer>(69));
+
+        int expected = 69;
+        int actual = list.getEnd().getData();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void append_IntegrityValidation() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(0);
+
+        for (int i = 1; i < 10; i++) {
+            list.append(new Node<Integer>(i));
+        }
+
+        for (int i = 1; i < 10; i++) {
+            assertEquals(i, list.get(i).getData());
+        }
+    }
 
     // POP TESTS
 
