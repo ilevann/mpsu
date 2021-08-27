@@ -174,7 +174,15 @@ public class DoubleLinkedList<T> {
 
     public void pop(Node<T> node) {
 
-        // disconnects node from other nodes
+        // removes given node
+
+        node.getPrev().setNext(node.getNext());
+        node.getNext().setPrev(node.getPrev());
+    }
+
+    public void popIndex(int index) {
+
+        // removes the node at the given index from the list
 
     }
 
