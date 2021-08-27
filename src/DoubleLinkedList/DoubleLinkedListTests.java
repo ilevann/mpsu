@@ -1,6 +1,7 @@
 package DoubleLinkedList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DoubleLinkedListTests {
 
@@ -54,11 +55,56 @@ public class DoubleLinkedListTests {
 
     // GET TESTS
 
+    @Test
+    public void get() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(0);
 
+        list.appendValue(1);
+        list.appendValue(2);
+        list.appendValue(3);
+
+        int expected = 2;
+        int actual = list.get(2).getData();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void get_InvalidIndex_ThrowsException() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+
+        assertThrows(InvalidIndexException.class, () -> list.get(-1));
+        assertThrows(InvalidIndexException.class, () -> list.get(5));
+    }
 
     // GETSTART TESTS
 
+    @Test
+    public void getStart() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(228);
+
+        list.appendValue(1);
+        list.appendValue(2);
+        list.appendValue(3);
+
+        int expected = 228;
+        int actual = list.getStart().getData();
+        assertEquals(expected, actual);
+    }
+
     // GETEND TESTS
+
+    @Test
+    public void getEnd() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(228);
+
+        list.appendValue(1);
+        list.appendValue(2);
+        list.appendValue(3);
+
+        int expected = 3;
+        int actual = list.getEnd().getData();
+        assertEquals(expected, actual);
+    }
 
     // FINDFIRST TESTS
 
