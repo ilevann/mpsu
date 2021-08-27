@@ -10,6 +10,6 @@ public class Main {
         list.append(new Node<Integer>(3));
 
 
-        list.printAll();
+        System.out.println(list.contains(4));
     }
 }
