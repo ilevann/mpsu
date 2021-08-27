@@ -164,9 +164,9 @@ public class DoubleLinkedList<T> {
         while (iterator.getPrev() != null) {
             iterator = iterator.getPrev();
         }
-        iterator.setPrev(end);
 
         // connecting end to the first connection of newNode
+        iterator.setPrev(end);
         end.setNext(iterator);
 
         // checking if newNode has its own next connections
@@ -207,7 +207,7 @@ public class DoubleLinkedList<T> {
             iterator = iterator.getNext();
         }
 
-        // if so, connection
+        // if so, connect most next connection to nodeBefore.getNext()
         iterator.setNext(nodeBefore.getNext());
         nodeBefore.getNext().setPrev(iterator);
 
@@ -217,16 +217,14 @@ public class DoubleLinkedList<T> {
         while (iterator.getPrev() != null) {
             iterator = iterator.getPrev();
         }
-        iterator.setPrev(nodeBefore);
 
-        // connecting nodeBefore to the first connection of newNode
+        // connecting nodeBefore to most previous connection of newNode
+        iterator.setPrev(nodeBefore);
         nodeBefore.setNext(iterator);
     }
 
-    public void insertBefore(Node<T> node) {
-
-        // connects list.get(index - 1) node to new node
-        // and then connects new node to list.get(index)
+    public void insertBefore(Node<T> nodeAfter, Node<T> newNode) {
+        insertAfter(nodeAfter.getPrev(), newNode);
 
     }
 

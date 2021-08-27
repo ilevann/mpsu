@@ -19,7 +19,7 @@ public class Main {
         Node<Integer> four = new Node<Integer>(three, 69, null);
         three.setNext(four);
 
-        list.insertAfter(list.findFirst(2), three);
+        list.insertBefore(list.findFirst(2), four);
 
         list.printAll();
 
