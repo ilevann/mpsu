@@ -13,10 +13,10 @@ public class Node<T> {
         this.data = data;
     }
 
-    public Node(Node<T> prev, Node<T> next, T data) {
+    public Node(Node<T> prev, T data, Node<T> next) {
         this.prev = prev;
-        this.next = next;
         this.data = data;
+        this.next = next;
     }
 
     // GET INFO

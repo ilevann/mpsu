@@ -11,8 +11,18 @@ public class Main {
 
         list.printAll();
 
-        list.popIndex(2);
+        Node<Integer> one = new Node<Integer>(null, 228, null);
+        Node<Integer> two = new Node<Integer>(one, 1337, null);
+        one.setNext(two);
+        Node<Integer> three = new Node<Integer>(two, 420, null);
+        two.setNext(three);
+        Node<Integer> four = new Node<Integer>(three, 69, null);
+        three.setNext(four);
+
+        list.insertAfter(list.findFirst(2), three);
 
         list.printAll();
+
+
     }
 }

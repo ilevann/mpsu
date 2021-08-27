@@ -158,17 +158,24 @@ public class DoubleLinkedList<T> {
 
         // links new node to the last one
 
-        // connecting new node to the last one
-        end.setNext(newNode);
-        newNode.setPrev(end);
-
-        // checking if newNode has its own connections
+        // checking if newNode has its own previous connections
+        // if so, connect first of the connections to the end
         Node<T> iterator = newNode;
+        while (iterator.getPrev() != null) {
+            iterator = iterator.getPrev();
+        }
+        iterator.setPrev(end);
+
+        // connecting end to the first connection of newNode
+        end.setNext(iterator);
+
+        // checking if newNode has its own next connections
+        iterator = newNode;
         while (iterator.getNext() != null) {
             iterator = iterator.getNext();
         }
 
-        // declaring the last newNode connection the end
+        // if so, declaring the last newNode connection the end
         end = iterator;
     }
 
@@ -189,14 +196,34 @@ public class DoubleLinkedList<T> {
     }
 
 
-    public void insertAfter(int index) {
+    public void insertAfter(Node<T> nodeBefore, Node<T> newNode) {
 
-        // connects list.get(index) node to new node
-        // and then connects new node to list.get(index + 1)
+        // connects nodeBefore node to given node
+        // and then connects given node to nodeBefore.getNext()
 
+        // checking if newNode has its own next connections
+        Node<T> iterator = newNode;
+        while (iterator.getNext() != null) {
+            iterator = iterator.getNext();
+        }
+
+        // if so, connection
+        iterator.setNext(nodeBefore.getNext());
+        nodeBefore.getNext().setPrev(iterator);
+
+        // checking if newNode has its own previous connections
+        // if so, connect first of the connections to the nodeBefore
+        iterator = newNode;
+        while (iterator.getPrev() != null) {
+            iterator = iterator.getPrev();
+        }
+        iterator.setPrev(nodeBefore);
+
+        // connecting nodeBefore to the first connection of newNode
+        nodeBefore.setNext(iterator);
     }
 
-    public void insertBefore(int index) {
+    public void insertBefore(Node<T> node) {
 
         // connects list.get(index - 1) node to new node
         // and then connects new node to list.get(index)
