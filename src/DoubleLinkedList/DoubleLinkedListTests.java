@@ -108,7 +108,227 @@ public class DoubleLinkedListTests {
 
     // FINDFIRST TESTS
 
+    @Test
+    public void findFirst() {
+        DoubleLinkedList<Integer> beginning = new DoubleLinkedList<Integer>(228);
+
+        beginning.appendValue(1);
+        beginning.appendValue(2);
+        beginning.appendValue(3);
+
+        int expected = 228;
+        int actual = beginning.findFirst(228).getData();
+        assertEquals(expected, actual);
+
+        DoubleLinkedList<Integer> middle = new DoubleLinkedList<Integer>(0);
+
+        middle.appendValue(1);
+        middle.appendValue(228);
+        middle.appendValue(3);
+        middle.appendValue(4);
+
+        expected = 228;
+        actual = middle.findFirst(228).getData();
+        assertEquals(expected, actual);
+
+        DoubleLinkedList<Integer> last = new DoubleLinkedList<Integer>();
+
+        last.appendValue(1);
+        last.appendValue(2);
+        last.appendValue(3);
+        last.appendValue(228);
+
+        expected = 228;
+        actual = last.findFirst(228).getData();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findFirst_multipleOccurrences() {
+        DoubleLinkedList<Integer> beginning = new DoubleLinkedList<Integer>(228);
+
+        beginning.appendValue(1);
+        beginning.appendValue(228);
+        beginning.appendValue(228);
+
+        int expected = 228;
+        int actual = beginning.findFirst(228).getData();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findFirst_ValueNotFound_ThrowsException() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+        assertThrows(ValueNotFoundException.class, () -> list.findFirst(228));
+    }
+
     // FINDFIRSTINDEX TESTS
+
+    @Test
+    public void findFirstIndex() {
+        DoubleLinkedList<Integer> beginning = new DoubleLinkedList<Integer>(228);
+
+        beginning.appendValue(1);
+        beginning.appendValue(2);
+        beginning.appendValue(3);
+
+        int expected = 0;
+        int actual = beginning.findFirstIndex(228);
+        assertEquals(expected, actual);
+
+        DoubleLinkedList<Integer> middle = new DoubleLinkedList<Integer>(0);
+
+        middle.appendValue(1);
+        middle.appendValue(228);
+        middle.appendValue(3);
+        middle.appendValue(4);
+
+        expected = 2;
+        actual = middle.findFirstIndex(228);
+        assertEquals(expected, actual);
+
+        DoubleLinkedList<Integer> last = new DoubleLinkedList<Integer>();
+
+        last.appendValue(1);
+        last.appendValue(2);
+        last.appendValue(3);
+        last.appendValue(228);
+
+        expected = 4;
+        actual = last.findFirstIndex(228);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findFirstIndex_multipleOccurrences() {
+        DoubleLinkedList<Integer> beginning = new DoubleLinkedList<Integer>(228);
+
+        beginning.appendValue(1);
+        beginning.appendValue(228);
+        beginning.appendValue(228);
+
+        int expected = 0;
+        int actual = beginning.findFirstIndex(228);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findFirstIndex_ValueNotFound_ThrowsException() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+        assertThrows(ValueNotFoundException.class, () -> list.findFirstIndex(228));
+    }
+
+    // FINDLAST TESTS
+
+    @Test
+    public void findLast() {
+        DoubleLinkedList<Integer> beginning = new DoubleLinkedList<Integer>(228);
+
+        beginning.appendValue(1);
+        beginning.appendValue(2);
+        beginning.appendValue(3);
+
+        int expected = 228;
+        int actual = beginning.findLast(228).getData();
+        assertEquals(expected, actual);
+
+        DoubleLinkedList<Integer> middle = new DoubleLinkedList<Integer>(0);
+
+        middle.appendValue(1);
+        middle.appendValue(228);
+        middle.appendValue(3);
+        middle.appendValue(4);
+
+        expected = 228;
+        actual = middle.findLast(228).getData();
+        assertEquals(expected, actual);
+
+        DoubleLinkedList<Integer> last = new DoubleLinkedList<Integer>();
+
+        last.appendValue(1);
+        last.appendValue(2);
+        last.appendValue(3);
+        last.appendValue(228);
+
+        expected = 228;
+        actual = last.findLast(228).getData();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findLast_multipleOccurrences() {
+        DoubleLinkedList<Integer> beginning = new DoubleLinkedList<Integer>(228);
+
+        beginning.appendValue(1);
+        beginning.appendValue(228);
+        beginning.appendValue(228);
+
+        int expected = 228;
+        int actual = beginning.findLast(228).getData();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findLast_ValueNotFound_ThrowsException() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+        assertThrows(ValueNotFoundException.class, () -> list.findLast(228));
+    }
+
+    // FINDLASTINDEX TESTS
+
+    @Test
+    public void findLastIndex() {
+        DoubleLinkedList<Integer> beginning = new DoubleLinkedList<Integer>(228);
+
+        beginning.appendValue(1);
+        beginning.appendValue(2);
+        beginning.appendValue(3);
+
+        int expected = 0;
+        int actual = beginning.findLastIndex(228);
+        assertEquals(expected, actual);
+
+        DoubleLinkedList<Integer> middle = new DoubleLinkedList<Integer>(0);
+
+        middle.appendValue(1);
+        middle.appendValue(228);
+        middle.appendValue(3);
+        middle.appendValue(4);
+
+        expected = 2;
+        actual = middle.findLastIndex(228);
+        assertEquals(expected, actual);
+
+        DoubleLinkedList<Integer> last = new DoubleLinkedList<Integer>();
+
+        last.appendValue(1);
+        last.appendValue(2);
+        last.appendValue(3);
+        last.appendValue(228);
+
+        expected = 4;
+        actual = last.findLastIndex(228);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findLastIndex_multipleOccurrences() {
+        DoubleLinkedList<Integer> beginning = new DoubleLinkedList<Integer>(228);
+
+        beginning.appendValue(1);
+        beginning.appendValue(228);
+        beginning.appendValue(228);
+
+        int expected = 3;
+        int actual = beginning.findLastIndex(228);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findLastIndex_ValueNotFound_ThrowsException() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+        assertThrows(ValueNotFoundException.class, () -> list.findLastIndex(228));
+    }
 
     // ISEMPTY TESTS
 
