@@ -39,13 +39,9 @@ public class DoubleLinkedList<T> {
     }
 
     public Node<T> get(int index) {
+        validateIndex(index);
 
         // returns node by its index
-
-        int listSize = getSize();
-        if (index < 0 || index >= listSize) {
-            throw new InvalidIndexException(index, listSize);
-        }
 
         Node<T> iterator = start;
 
@@ -236,11 +232,26 @@ public class DoubleLinkedList<T> {
 
         // removes given node
 
+        // removing first node
+        if (node.getPrev() == null) {
+            start = node.getNext();
+            start.setPrev(null);
+            return;
+        }
+
+        // removing last node
+        if (node.getNext() == null) {
+            end = node.getPrev();
+            end.setNext(null);
+            return;
+        }
+
         node.getPrev().setNext(node.getNext());
         node.getNext().setPrev(node.getPrev());
     }
 
     public void popIndex(int index) {
+        validateIndex(index);
 
         // removes the node at the given index from the list
 
@@ -293,5 +304,14 @@ public class DoubleLinkedList<T> {
         }
 
         System.out.println(iterator.getData() + ")");
+    }
+
+    private void validateIndex(int index) {
+
+        int listSize = getSize();
+
+        if (index < 0 || index >= listSize) {
+            throw new InvalidIndexException(index, listSize);
+        }
     }
 }

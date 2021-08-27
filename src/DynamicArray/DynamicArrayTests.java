@@ -1,7 +1,6 @@
 package DynamicArray;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -66,7 +65,7 @@ public class DynamicArrayTests {
     // FINDFIRST TESTS
 
     @Test
-    public void findFirst_int() {
+    public void findFirst() {
         DynamicArray<Integer> array = new DynamicArray<Integer> (10);
 
         for (int i=0; i < array.getSize(); i++) {
@@ -81,7 +80,7 @@ public class DynamicArrayTests {
     }
 
     @Test
-    public void findFirst_int_multiple() {
+    public void findFirst_multiple() {
         DynamicArray<Integer> array = new DynamicArray<Integer> (10);
 
         for (int i=0; i < array.getSize(); i++) {
@@ -110,7 +109,7 @@ public class DynamicArrayTests {
     // FINDLAST TESTS
 
     @Test
-    public void findLast_int() {
+    public void findLast() {
         DynamicArray<Integer> array = new DynamicArray<Integer> (10);
 
         for (int i=0; i < array.getSize(); i++) {
@@ -125,7 +124,7 @@ public class DynamicArrayTests {
     }
 
     @Test
-    public void findLast_int_multiple() {
+    public void findLast_multiple() {
         DynamicArray<Integer> array = new DynamicArray<Integer> (10);
 
         for (int i=0; i < array.getSize(); i++) {
@@ -154,7 +153,7 @@ public class DynamicArrayTests {
     // SET TESTS
 
     @Test
-    public void set_int() {
+    public void set() {
         DynamicArray<Integer> array = new DynamicArray<Integer>(10);
 
         array.set(0, 777);

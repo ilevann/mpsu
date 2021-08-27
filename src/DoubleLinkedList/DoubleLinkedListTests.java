@@ -525,7 +525,156 @@ public class DoubleLinkedListTests {
 
     // POP TESTS
 
+    @Test
+    public void pop_PopFirst() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(228);
+
+        list.appendValue(1);
+        list.appendValue(228);
+        list.appendValue(228);
+
+        list.pop(list.get(0));
+
+        int expected = 3;
+        int actual = list.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void pop_PopLast() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(228);
+
+        list.appendValue(1);
+        list.appendValue(228);
+        list.appendValue(228);
+
+        list.pop(list.get(3));
+
+        int expected = 3;
+        int actual = list.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void pop_SizeValidation() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(228);
+
+        list.appendValue(1);
+        list.appendValue(228);
+        list.appendValue(228);
+
+        list.pop(list.get(3));
+
+        int expected = 3;
+        int actual = list.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void pop_IntegrityValidation() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(0);
+
+        for (int i = 1; i < 10; i++) {
+            list.appendValue(i);
+        }
+
+        list.pop(list.get(4));
+
+        for (int i = 1; i < 4; i++) {
+            assertEquals(i, list.get(i).getData());
+        }
+
+        for (int i = 4; i < 9; i++) {
+            assertEquals(i + 1, list.get(i).getData());
+        }
+    }
+
+    @Test
+    public void pop_ValueNotFound_ThrowsException() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(228);
+
+        list.appendValue(1);
+        list.appendValue(228);
+        list.appendValue(228);
+
+        int expected = 4;
+        int actual = list.getSize();
+        assertEquals(expected, actual);
+    }
+
     // POPINDEX TESTS
+
+    @Test
+    public void popIndex_PopFirst() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(228);
+
+        list.appendValue(1);
+        list.appendValue(228);
+        list.appendValue(228);
+
+        list.popIndex(0);
+
+        int expected = 3;
+        int actual = list.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void popIndex_PopLast() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(228);
+
+        list.appendValue(1);
+        list.appendValue(228);
+        list.appendValue(228);
+
+        list.popIndex(3);
+
+        int expected = 3;
+        int actual = list.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void popIndex_SizeValidation() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(228);
+
+        list.appendValue(1);
+        list.appendValue(228);
+        list.appendValue(228);
+
+        list.popIndex(3);
+
+        int expected = 3;
+        int actual = list.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void popIndex_IntegrityValidation() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(0);
+
+        for (int i = 1; i < 10; i++) {
+            list.appendValue(i);
+        }
+
+        list.popIndex(4);
+
+        for (int i = 1; i < 4; i++) {
+            assertEquals(i, list.get(i).getData());
+        }
+
+        for (int i = 4; i < 9; i++) {
+            assertEquals(i + 1, list.get(i).getData());
+        }
+    }
+
+    @Test
+    public void popIndex_InvalidIndex_ThrowsException() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(228);
+
+        assertThrows(InvalidIndexException.class, () -> list.popIndex(-1));
+        assertThrows(InvalidIndexException.class, () -> list.popIndex(5));
+    }
 
     // INSERTAFTER TESTS
 

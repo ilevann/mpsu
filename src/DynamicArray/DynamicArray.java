@@ -27,12 +27,9 @@ public class DynamicArray<T> {
     }
 
     public T get(int index) {
+        validateIndex(index);
 
         // returns list element by index
-
-        if (index < 0 || index >= getSize()) {
-            throw new InvalidIndexException(index, getSize());
-        }
 
         return list[index];
     }
@@ -72,10 +69,7 @@ public class DynamicArray<T> {
     // EDIT ARRAY
 
     public void set(int index, T value) {
-        if (index < 0 || index >= getSize()) {
-            throw new InvalidIndexException(index, getSize());
-        }
-
+        validateIndex(index);
         list[index] = value;
     }
 
@@ -110,21 +104,14 @@ public class DynamicArray<T> {
     }
 
     public void insert(int index, T value) {
-        if (index < 0 || index >= getSize()) {
-            throw new InvalidIndexException(index, getSize());
-        }
-
+        validateIndex(index);
         resize(getSize() + 1);
-
         if (getSize() - 1 - index >= 0) System.arraycopy(list, index, list, index + 1, getSize() - 1 - index);
-
         set(index, value);
     }
 
     public void remove(int index) {
-        if (index < 0 || index >= getSize()) {
-            throw new InvalidIndexException(index, getSize());
-        }
+        validateIndex(index);
 
         T[] newList = (T[]) new Object[getSize() - 1];
 
@@ -143,11 +130,21 @@ public class DynamicArray<T> {
     }
 
     // DEV METHODS
+
     public void printAll() {
         System.out.print("[");
         for (int i = 0; i < getSize() - 1; i++) {
             System.out.print(get(i) + ", ");
         }
         System.out.println(get(getSize() - 1) + "]");
+    }
+
+    private void validateIndex(int index) {
+
+        int listSize = getSize();
+
+        if (index < 0 || index >= listSize) {
+            throw new InvalidIndexException(index, listSize);
+        }
     }
 }
