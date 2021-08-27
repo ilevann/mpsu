@@ -8,10 +8,8 @@ public class Main {
         list.append(new Node<Integer>(1));
         list.append(new Node<Integer>(2));
         list.append(new Node<Integer>(3));
-        list.append(new Node<Integer>(3));
-        list.append(new Node<Integer>(3));
 
-        int temp = list.findFirstIndex(3);
-        System.out.println(temp);
+
+        list.printAll();
     }
 }

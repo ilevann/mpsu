@@ -75,7 +75,7 @@ public class DoubleLinkedList<T> {
         // returns the first occurrence of node with a specific value
 
         Node<T> iterator = start;
-        while (iterator.getNext() != null) {
+        while (iterator != null) {
 
             if (iterator.getData() != null && iterator.getData().equals(value)) {
                 return iterator;
@@ -94,7 +94,7 @@ public class DoubleLinkedList<T> {
         Node<T> iterator = start;
         int index = 0;
 
-        while (iterator.getNext() != null) {
+        while (iterator != null) {
 
             if (iterator.getData() != null && iterator.getData().equals(value)) {
                 return index;
@@ -108,6 +108,32 @@ public class DoubleLinkedList<T> {
     }
 
     public Boolean isEmpty() {
+        Node<T> iterator = start;
+
+        while (iterator != null) {
+
+            if (iterator.getData() != null) {
+                return false;
+            }
+
+            iterator = iterator.getNext();
+        }
+
+        return true;
+    }
+
+    public Boolean isFull() {
+        Node<T> iterator = start;
+
+        while (iterator != null) {
+
+            if (iterator.getData() == null) {
+                return false;
+            }
+
+            iterator = iterator.getNext();
+        }
+
         return true;
     }
 
@@ -158,10 +184,15 @@ public class DoubleLinkedList<T> {
 
     // DEV METHODS
 
-    private void traverse() {
+    public void printAll() {
+        Node<T> iterator = start;
 
-        // traverses throughout list
+        System.out.print("(");
+        while (iterator.getNext() != null) {
+            System.out.print(iterator.getData() + ", ");
+            iterator = iterator.getNext();
+        }
 
-
+        System.out.println(iterator.getData() + ")");
     }
 }
