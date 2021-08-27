@@ -7,19 +7,17 @@ public class Main {
 
         list.appendValue(1);
         list.appendValue(2);
-        list.appendValue(3);
+        list.appendValue(7);
 
-        list.printAll();
-
-        Node<Integer> one = new Node<Integer>(null, 228, null);
-        Node<Integer> two = new Node<Integer>(one, 1337, null);
-        one.setNext(two);
-        Node<Integer> three = new Node<Integer>(two, 420, null);
-        two.setNext(three);
-        Node<Integer> four = new Node<Integer>(three, 69, null);
+        Node<Integer> three = new Node<Integer>(null, 3, null);
+        Node<Integer> four = new Node<Integer>(three, 4, null);
         three.setNext(four);
+        Node<Integer> five = new Node<Integer>(four, 5, null);
+        four.setNext(five);
+        Node<Integer> six = new Node<Integer>(four, 6, null);
+        five.setNext(six);
 
-        list.insertBefore(list.findFirst(2), four);
+        list.insertAfter(list.findFirst(2), four);
 
         list.printAll();
 

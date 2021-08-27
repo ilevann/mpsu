@@ -678,6 +678,98 @@ public class DoubleLinkedListTests {
 
     // INSERTAFTER TESTS
 
+    @Test
+    public void insertAfter_SizeValidation() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(0);
+
+        list.appendValue(1);
+        list.appendValue(2);
+        list.appendValue(3);
+
+        Node<Integer> one = new Node<Integer>(null, 228, null);
+        Node<Integer> two = new Node<Integer>(one, 1337, null);
+        one.setNext(two);
+        Node<Integer> three = new Node<Integer>(two, 420, null);
+        two.setNext(three);
+        Node<Integer> four = new Node<Integer>(three, 69, null);
+        three.setNext(four);
+
+        list.insertAfter(list.findFirst(2), four);
+
+        int expected = 8;
+        int actual = list.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void insertAfter_IntegrityValidation() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(0);
+
+        list.appendValue(1);
+        list.appendValue(2);
+        list.appendValue(7);
+
+        Node<Integer> three = new Node<Integer>(null, 3, null);
+        Node<Integer> four = new Node<Integer>(three, 4, null);
+        three.setNext(four);
+        Node<Integer> five = new Node<Integer>(four, 5, null);
+        four.setNext(five);
+        Node<Integer> six = new Node<Integer>(four, 6, null);
+        five.setNext(six);
+
+        list.insertAfter(list.findFirst(2), four);
+
+        for (int i = 0; i < 8; i++) {
+            assertEquals(i, list.get(i).getData());
+        }
+    }
+
     // INSERTBEFORE TESTS
+
+    @Test
+    public void insertBefore_SizeValidation() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(0);
+
+        list.appendValue(1);
+        list.appendValue(2);
+        list.appendValue(3);
+
+        Node<Integer> one = new Node<Integer>(null, 228, null);
+        Node<Integer> two = new Node<Integer>(one, 1337, null);
+        one.setNext(two);
+        Node<Integer> three = new Node<Integer>(two, 420, null);
+        two.setNext(three);
+        Node<Integer> four = new Node<Integer>(three, 69, null);
+        three.setNext(four);
+
+        list.insertBefore(list.findFirst(2), four);
+
+        int expected = 8;
+        int actual = list.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void insertBefore_IntegrityValidation() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>(0);
+
+        list.appendValue(1);
+        list.appendValue(2);
+        list.appendValue(7);
+
+        Node<Integer> three = new Node<Integer>(null, 3, null);
+        Node<Integer> four = new Node<Integer>(three, 4, null);
+        three.setNext(four);
+        Node<Integer> five = new Node<Integer>(four, 5, null);
+        four.setNext(five);
+        Node<Integer> six = new Node<Integer>(four, 6, null);
+        five.setNext(six);
+
+        list.insertBefore(list.findFirst(7), three);
+
+        for (int i = 0; i < 8; i++) {
+            assertEquals(i, list.get(i).getData());
+        }
+    }
 
 }
