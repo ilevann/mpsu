@@ -184,6 +184,8 @@ public class DoubleLinkedList<T> {
 
         // removes the node at the given index from the list
 
+        Node<T> node = get(index);
+        pop(node);
     }
 
 

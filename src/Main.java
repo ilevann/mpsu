@@ -11,7 +11,7 @@ public class Main {
 
         list.printAll();
 
-        list.pop(list.get(2));
+        list.popIndex(2);
 
         list.printAll();
     }
